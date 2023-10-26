@@ -1,0 +1,281 @@
+/* Reset some default browser styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Styles */
+body {
+    /* font-family: Arial, sans-serif; */
+    font-family: "Verdana", sans-serif;
+    /* background-color: #999; */
+    color: #333;
+    line-height: 1.6;
+}
+
+section {
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 50vw;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: space-around;
+    min-height: 30vh;
+    overflow: hidden;
+}
+
+section div {
+    padding: 1rem;
+}
+
+.smaller {
+    text-align: center;
+    width: 20%;
+    min-width: 250px;
+}
+
+.larger {
+    /* max-width: 600px; */
+    min-width: 500px;
+    max-width: 60%;
+    flex-grow: 1;
+}
+
+.centered {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.centered > a {
+    justify-content: center;
+    padding: 0.5rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    width: 400px;
+}
+
+section a:link, section a:visited, section a:visited, section a:active {
+    color: navy;
+    text-decoration: none;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* nav ul li.right {
+    position: absolute;
+    right: 0;
+} */
+
+nav ul li a:hover {
+    color: lightblue; 
+}
+
+/* Introduction Section */
+
+#profile img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#profile i {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+}
+
+#name {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+#hello {
+    font-size: 4vw;
+    height: 6vw;
+    width: fit-content;
+    text-align: right;
+    animation: caret 1s steps(1) infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Publications Section */
+#publications {
+    background-color: #ccc;
+}
+
+#papers li {
+    background-color: #d5d5d5;
+    border-left: #333 solid;
+    border-bottom: #333 solid;
+    border-top: #ccc solid;
+    border-right: #ccc solid;
+    transition: 0.3s;
+    /* list-style-type: square; */
+}
+
+#papers li:hover {
+    background-color: #ddd;
+    border-top: #fff solid;
+    border-right: #fff solid;
+}
+
+#papers li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+#papers a {
+    display: block;
+    padding: 0.5rem;
+}
+
+#papers p:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+#papers .title {
+    font-weight: bold;
+    font-size: 1rem;
+}
+#papers .authors{
+    font-size: 0.75rem;
+    text-align: left;
+}
+
+#papers .date_and_pub {
+    padding: 0;
+    font-size: 0.75rem;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#papers .date {
+    font-style: italic;
+    width: 50%;
+    text-align: left;
+}
+
+#papers .publisher {
+    font-weight: bold;
+    width: 50%;
+    text-align: right;
+}
+
+/* Resume */
+#resume {
+    padding-bottom: 0;
+}
+
+#resume .smaller {
+    max-height: fit-content;
+}
+
+#resume .larger {
+    background-image: url(img/Kinan_Martin_Resume_M.png);
+    background-size: cover;
+    padding: 0;
+    box-shadow: 0 0 10px #333; 
+    min-width: 500px;
+}
+
+#resume .larger:hover{
+    transform: scale(1.05);
+}
+
+#resume .larger a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* YouTube Section */
+
+#youtube {
+    position: relative;
+    background-color: transparent;
+    /* color: #f4f4f4; */
+}
+
+
+#youtube::before {
+    content: "";
+    display: block;
+    background: url(img/world_flags.png) repeat-x;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3600px;
+    height: 100%;
+    opacity: 0.2; /* Adjust the opacity value as needed */
+    z-index: -1; /* Place it behind other content in the section */
+    animation: slideBackground 20s linear 0s infinite; /* Adjust the duration as needed */
+}
+
+@keyframes slideBackground {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-1800px);
+    }
+}
+
+
+/* Other */
+
+.bold {
+    font-weight: bolder;
+}
+
+.auto-margin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-width {
+    width: max-content;
+}
+
+.block {
+    display: block;
+}
+
+.button {
+    background: rgba(33, 33, 33, 0.5); 
+    border: 4px solid #ccc;
+    color: #f4f4f4;
+    padding: 2%;
+    text-align: center;
+    display: inline-block;
+}
+
