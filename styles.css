@@ -38,9 +38,8 @@ section div {
 }
 
 .larger {
-    /* max-width: 600px; */
-    min-width: 500px;
     max-width: 60%;
+    min-width: min(90%, 500px);
     flex-grow: 1;
 }
 
@@ -55,7 +54,7 @@ section div {
     padding: 0.5rem;
     margin-top: 2rem;
     font-size: 2rem;
-    width: 400px;
+    width: min(90%, 500px);
 }
 
 section a:link, section a:visited, section a:visited, section a:active {
