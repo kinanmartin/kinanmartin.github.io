@@ -127,6 +127,35 @@ nav ul li a:hover {
     }
 }
 
+.hover_text {
+    position: relative;
+    color: navy;
+    border-bottom: 1px dotted black;
+}
+
+.hover_text:before {
+    content: attr(data_hover);
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 10px;
+    transition: opacity 0.5s ease-in-out;
+    line-height: 1;
+    position: absolute;
+    z-index: 1;
+    right: -50%;
+    bottom: 100%;
+    white-space: pre-line;
+  }
+  
+.hover_text:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Publications Section */
 #publications {
     background-color: #ccc;
