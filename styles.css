@@ -137,7 +137,7 @@ nav ul li a:hover {
     content: attr(data_hover);
     visibility: hidden;
     opacity: 0;
-    width: max-content;
+    display: block;
     background-color: black;
     color: #fff;
     border-radius: 5px;
@@ -146,12 +146,14 @@ nav ul li a:hover {
     line-height: 1;
     position: absolute;
     z-index: 1;
-    right: -50%;
     bottom: 100%;
     white-space: pre-line;
-  }
+    width: max-content;
+    max-width: 70vw;
+    margin: 0 auto;
+}
   
-.hover_text:hover:before {
+.hover_text:hover:before, .hover_text:active:before {
     opacity: 1;
     visibility: visible;
 }
