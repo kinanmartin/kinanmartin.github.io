@@ -127,7 +127,7 @@ nav ul li a:hover {
     }
 }
 
-.hover_text {
+/* .hover_text {
     position: relative;
     color: navy;
     border-bottom: 1px dotted black;
@@ -156,7 +156,7 @@ nav ul li a:hover {
 .hover_text:hover:before, .hover_text:active:before {
     opacity: 1;
     visibility: visible;
-}
+} */
 
 /* Publications Section */
 #publications {
