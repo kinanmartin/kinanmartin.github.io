@@ -1,4 +1,3 @@
-/* Reset some default browser styles */
 body, h1, h2, p, ul, li {
     margin: 0;
     padding: 0;
@@ -97,6 +96,11 @@ nav ul li a:hover {
 
 /* Introduction Section */
 
+#introduction {
+    background-color: #f4f4f4;
+}
+
+
 #profile img {
     max-width: 100%;
     max-height: 100%;
@@ -160,23 +164,39 @@ nav ul li a:hover {
     }
 }
 
-
-/* Publications Section */
-#publications {
+/* News */
+#news {
     background-color: #ccc;
 }
 
+#news .larger {
+    background-color: #eee;
+    border: #333 solid;
+}
+
+#news .larger ul{
+    background-color: #eee;
+    margin-left: 2rem;
+}
+
+/* Publications Section */
+#publications {
+    /* background-color: #ccc; */
+}
+
 #papers li {
-    background-color: #d5d5d5;
+    background-color: #eee;
+    /* background-color: #d5d5d5; */
     border-left: #333 solid;
     border-bottom: #333 solid;
-    border-top: #ccc solid;
-    border-right: #ccc solid;
+    border-top: #fff solid;
+    border-right: #fff solid;
     transition: 0.3s;
     /* list-style-type: square; */
 }
 
 #papers li:hover {
+    /* background-color: #f8f8f8; */
     background-color: #ddd;
     border-top: #fff solid;
     border-right: #fff solid;
@@ -223,8 +243,10 @@ nav ul li a:hover {
     text-align: right;
 }
 
+
 /* Resume */
 #resume {
+    background-color: #ccc;
     padding-bottom: 0;
 }
 
@@ -250,6 +272,55 @@ nav ul li a:hover {
     height: 100%;
 }
 
+/* Languages */
+
+.language-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0px;
+}
+
+.language {
+    min-width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.language span[role=img] {
+    font-size: 6rem;
+    line-height: 1;
+}
+
+.language span {
+    font-weight: bold;
+    font-size: 1.5em;
+    white-space: nowrap;
+}
+
+.english-name {
+    display: none;
+}
+
+.language:hover .native-name {
+    display: none;
+}
+
+.language:hover .english-name {
+    display: block;
+}
+
+.language:hover {
+    background-color: #ddd;
+}
+
 
 /* YouTube Section */
 
@@ -269,9 +340,9 @@ nav ul li a:hover {
     left: 0;
     width: 3600px;
     height: 100%;
-    opacity: 0.2; /* Adjust the opacity value as needed */
-    z-index: -1; /* Place it behind other content in the section */
-    animation: slideBackground 20s linear 0s infinite; /* Adjust the duration as needed */
+    opacity: 0.2; 
+    z-index: -1; 
+    animation: slideBackground 20s linear 0s infinite;
 }
 
 @keyframes slideBackground {
