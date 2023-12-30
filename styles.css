@@ -309,13 +309,23 @@ nav ul li a:hover {
     display: none;
 }
 
+.language.active .native-name,
 .language:hover .native-name {
+    display: none;
+}
+
+.language.active .english-name,
+.language:hover .english-name {
+    display: block;
+}
+
+/* .language:hover .native-name {
     display: none;
 }
 
 .language:hover .english-name {
     display: block;
-}
+} */
 
 .language:hover {
     background-color: #ddd;

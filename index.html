@@ -234,5 +234,13 @@
             <a class="button">Coming soon!</a>
         </div>
     </section>
+
+    <script>
+        document.querySelectorAll('.language').forEach(function(lang) {
+            lang.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>    
 </body>
 </html>
