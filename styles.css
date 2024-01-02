@@ -322,6 +322,7 @@ nav ul li a:hover {
 .language.active .english-name,
 .language:hover .english-name {
     display: block;
+    color: #0000ff;
 }
 
 /* .language:hover .native-name {
