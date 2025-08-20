@@ -3,391 +3,655 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="favicon.ico" />
     <script
       src="https://kit.fontawesome.com/05d09269ad.js"
       crossorigin="anonymous"
     ></script>
     <title>Kinan Martin</title>
+    <style>
+      /* Custom animations and special styles that Tailwind doesn't cover */
+      @keyframes caret {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      @keyframes slideBackground {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-1800px);
+        }
+      }
+
+      .animate-caret {
+        animation: caret 1s steps(1) infinite;
+      }
+
+      .animate-slide-bg {
+        animation: slideBackground 20s linear 0s infinite;
+      }
+
+      /* RTL support for hello animation */
+      .rtl-border {
+        direction: rtl;
+        border-left: 0.1em solid;
+        border-right: none;
+      }
+
+      .ltr-border {
+        direction: ltr;
+        border-right: 0.1em solid;
+        border-left: none;
+      }
+    </style>
   </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="">Kinan Martin</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li>
-          <a href="files/Kinan_Martin_Resume.pdf" target="_blank">Resume</a>
-        </li>
-        <li><a href="#languages">Languages</a></li>
-        <li><a href="#youtube">YouTube</a></li>
-        <!-- <li><a href="#contact">Contact</a></li> -->
-        <!-- <li class="right">Dark Mode</li> -->
-      </ul>
-    </nav>
+  <body class="font-sans text-gray-800 leading-relaxed bg-gray-100">
+    <!-- Navigation will be injected here -->
+    <nav
+      id="navigation"
+      class="bg-gray-900 text-white text-center py-4 sticky top-0 z-50 shadow-lg"
+    ></nav>
 
-    <section id="introduction">
-      <div id="profile" class="smaller">
-        <img src="img/headshot.jpeg" alt="Me in Howth, Ireland" />
-        <!-- gif on hover? -->
-        <span id="name">Kinan Martin</span>
-        <p><code>kinanmartin0 _ gmail _ com</code></p>
-        <p>
-          <a
-            href="https://www.linkedin.com/in/kinan-martin-89900b208/"
-            target="_blank"
-          >
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          |
-          <a
-            href="https://scholar.google.com/citations?user=XRTlOoMAAAAJ&hl=en"
-            target="_blank"
-          >
-            <i class="fa-solid fa-graduation-cap"></i>
-          </a>
-          |
-          <a href="https://github.com/kinanmartin" target="_blank">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          |
-          <a href="https://www.instagram.com/kinan_martin/">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <!-- <a href="https://www.youtube.com">YouTube</a> -->
-        </p>
-      </div>
-      <div id="about_me" class="larger">
-        <h1 id="hello"></h1>
-        <script src="hello.js"></script>
-        <p>
-          I’m
-          <strong>Kinan Martin</strong>
-          , a current Master of Engineering student of Computer and Cognitive
-          Sciences at MIT (Course 6-9 MEng). My motivation is to
-          <strong>
-            use natural language processing systems to build meaningful
-            connections
-          </strong>
-          . I have experience researching, designing, and implementing a variety
-          of text-based, speech-based, and vision-based multi-modal NLP models.
-          I’ve applied these models to a wide range of use cases, including
-          psycholinguistic, clinical, driving, and commercial applications.
-        </p>
-        <br />
-        <p>
-          I'm currently working at
-          <a href="https://reazon.jp">Reazon Holdings</a>
-          --
-          <a href="https://research.reazon.jp/index.html">
-            Human Interaction Laboratory
-          </a>
-          in Tokyo, Japan, but will probably be back in the US around September.
-        </p>
-        <br />
-        <p>
-          Before this, I worked at the
-          <a href="http://cpl.mit.edu">Computational Psycholinguistics Lab</a>
-          under
-          <a href="https://www.mit.edu/~rplevy/index.html">Roger Levy</a>
-          on my thesis about probing text and speech based large language models
-          for natural language understanding.
-        </p>
-        <br />
-        <p>
-          I love learning languages. Currently I speak
-          <b><a href="#languages">10 languages</a></b>
-          at different levels of fluency, and I’m always learning more!
-        </p>
-      </div>
-    </section>
-
-    <section id="news">
-      <div class="smaller">
-        <h2>News</h2>
-      </div>
-      <div class="larger">
-        <ul id="news" class="fa-ul" style="--fa-li-margin: 0">
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2024/06:</b>
-              Started work at
-              <a href="https://reazon.jp">Reazon Holdings</a>
-              --
-              <a href="https://research.reazon.jp/index.html">
-                Human Interaction Laboratory
-              </a>
-              doing NLP, Spoken Language Processing, and Robotics R&D in Tokyo,
-              Japan 🇯🇵
-            </p>
-          </li>
-          <br />
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2024/05:</b>
-              Graduated with Master of Science in Computation and Cognition from
-              MIT! 🎓🎓🎉🎉
-            </p>
-          </li>
-          <br />
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2024/01:</b>
-              Teaching Python and web dev through
-              <a href="https://misti.mit.edu/mit-arab-world">
-                MIT-Arab World Global Teaching Labs
-              </a>
-              at
-              <a href="https://injaz.org.jo">INJAZ</a>
-              in Amman, Jordan 🇯🇴
-            </p>
-          </li>
-          <br />
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2023/09:</b>
-              Began Master of Engineering in Computation in Cognition at MIT 🙏
-            </p>
-          </li>
-          <br />
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2023/08:</b>
-              Presented
-              <a href="https://arxiv.org/abs/2306.06232" target="_blank">
-                paper
-              </a>
-              on probing self-supervised speech models at
-              <a href="https://interspeech2023.org">INTERSPEECH 2023</a>
-              in Dublin, Ireland 🇮🇪
-            </p>
-          </li>
-          <br />
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2023/06-08:</b>
-              Interned at
-              <a href="https://www.hh-ri.com/ai/">
-                Foxconn: Hon Hai Research Institute in the Artificial
-                Intelligence Department (鴻海研究院人工智慧所)
-              </a>
-              in Taipei, Taiwan 🇹🇼
-            </p>
-          </li>
-          <br />
-          <li>
-            <span class="fa-li"><i class="fa-solid fa-arrow-right"></i></span>
-            <p>
-              <b>2023/05:</b>
-              Graduated with Bachelor of Science in Computation and Cognition
-              from MIT! 🎓🎉
-            </p>
-          </li>
-          <p style="font-size: x-small">
-            <br />
-            [以下省略]
+    <!-- Introduction Section -->
+    <section
+      id="introduction"
+      class="max-w-6xl mx-auto px-4 py-12 bg-white mt-8 rounded-lg shadow-md"
+    >
+      <div class="flex flex-wrap items-start justify-center gap-8">
+        <!-- Profile -->
+        <div id="profile" class="text-center w-full md:w-1/3 lg:w-1/4">
+          <img
+            src="img/headshot.jpeg"
+            alt="Me in Howth, Ireland"
+            class="w-full max-w-xs mx-auto rounded-lg shadow-lg mb-4"
+          />
+          <h2 id="name" class="text-3xl font-bold mb-2">Kinan Martin</h2>
+          <p class="mb-3">
+            <code class="bg-gray-100 px-2 py-1 rounded">
+              kinanmartin0 _ gmail _ com
+            </code>
           </p>
-        </ul>
+          <div
+            id="social-links"
+            class="flex justify-center gap-4 text-2xl"
+          ></div>
+        </div>
+
+        <!-- About Me -->
+        <div id="about_me" class="flex-1 min-w-0 md:min-w-[400px]">
+          <h1
+            id="hello"
+            class="text-5xl lg:text-6xl font-bold mb-6 h-20 animate-caret ltr-border"
+          ></h1>
+          <div id="about-content" class="space-y-4 text-lg"></div>
+        </div>
       </div>
     </section>
 
-    <section id="publications">
-      <div class="smaller">
-        <h2>Publications</h2>
+    <!-- News Section -->
+    <section id="news" class="max-w-6xl mx-auto px-4 py-12 mt-8">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold text-center mb-8">News</h2>
+        <div class="bg-gray-50 border-l-4 border-blue-600 rounded-lg p-6">
+          <ul id="news-list" class="space-y-6"></ul>
+        </div>
       </div>
-      <div class="larger">
-        <ul id="papers" class="fa-ul" style="--fa-li-margin: 0">
-          <li class="paper">
-            <a href="https://arxiv.org/abs/2306.06232" target="_blank">
-              <span class="fa-li">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-              <p class="title">
-                Probing self-supervised speech models for phonetic and phonemic
-                information: a case study in aspiration
-              </p>
-              <p class="authors">
-                <strong>Kinan Martin</strong>
-                , Jon Gauthier, Canaan Breiss, Roger Levy
-              </p>
-              <div class="date_and_pub">
-                <p class="date">August 2023</p>
-                <p class="publisher">INTERSPEECH 2023</p>
-              </div>
-            </a>
-          </li>
-          <li class="paper">
-            <a href="https://aclanthology.org/2022.smm4h-1.15/" target="_blank">
-              <span class="fa-li">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-              <p class="title">
-                PLN CMM at SocialDisNER: Improving Detection of Disease Mentions
-                in Tweets by Using Document-Level Features
-              </p>
-              <p class="authors">
-                Matías Rojas, Jose Barros,
-                <strong>Kinan Martin</strong>
-                , Mauricio Araneda-Hernandez, Jocelyn Dunstan
-              </p>
-              <div class="date_and_pub">
-                <p class="date">October 2022</p>
-                <p class="publisher">
-                  Association for Computational Linguistics
-                </p>
-              </div>
-            </a>
-          </li>
-          <li class="paper">
-            <a
-              href="https://www.frontiersin.org/articles/10.3389/frai.2022.970517/full"
-              target="_blank"
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="max-w-6xl mx-auto px-4 py-12">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold text-center mb-8">Publications</h2>
+        <ul id="papers" class="space-y-4"></ul>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="max-w-6xl mx-auto px-4 py-12">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold text-center mb-8">Resume</h2>
+        <div class="flex justify-center">
+          <a
+            href="files/Kinan_Martin_Resume.pdf"
+            target="_blank"
+            class="block bg-gray-100 hover:bg-gray-200 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 p-8"
+          >
+            <div
+              class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 text-center"
             >
-              <span class="fa-li">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-              <p class="title">
-                Training and intrinsic evaluation of lightweight word embeddings
-                for the clinical domain in Spanish
-              </p>
-              <p class="authors">
-                Carolina Chiu, Fabián Villena,
-                <strong>Kinan Martin</strong>
-                , Fredy Núñez, Cecilia Besa, Jocelyn Dunstan
-              </p>
-              <div class="date_and_pub">
-                <p class="date">September 2022</p>
-                <p class="publisher">Frontiers</p>
-              </div>
-            </a>
-          </li>
-          <li class="paper">
+              <i class="fa-solid fa-file-pdf text-6xl mb-4"></i>
+              <p class="text-xl font-semibold">View Resume (PDF)</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="max-w-6xl mx-auto px-4 py-12">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold text-center mb-8">Languages</h2>
+        <div
+          id="language-container"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        ></div>
+      </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube" class="max-w-6xl mx-auto px-4 py-12 mb-8">
+      <div class="bg-white rounded-lg shadow-md p-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div
+            class="animate-slide-bg"
+            style="
+              width: 3600px;
+              height: 100%;
+              background: url(img/world_flags.png) repeat-x;
+            "
+          ></div>
+        </div>
+        <div class="relative z-10">
+          <h2 class="text-3xl font-bold text-center mb-8">YouTube</h2>
+          <div class="text-center">
             <a
-              href="https://www.sciencedirect.com/science/article/pii/S0010027722000580"
-              target="_blank"
+              class="inline-block bg-gray-800 bg-opacity-70 border-4 border-gray-300 text-white px-8 py-4 text-2xl rounded-lg hover:bg-opacity-90 transition-all duration-300"
             >
-              <span class="fa-li">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </span>
-              <p class="title">
-                Poor writing, not specialized concepts, drives processing
-                difficulty in legal language
-              </p>
-              <p class="authors">
-                Eric Martínez, Francis Mollica, Edward Gibson
-              </p>
-              <div class="date_and_pub">
-                <p class="date">July 2022</p>
-                <p class="publisher">Cognition</p>
-              </div>
+              Coming soon!
             </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="resume">
-      <div class="smaller">
-        <h2>Resume</h2>
-      </div>
-      <div class="larger">
-        <a href="files/Kinan_Martin_Resume.pdf" target="_blank"></a>
-      </div>
-    </section>
-
-    <section id="languages">
-      <div class="smaller">
-        <h2>Languages</h2>
-      </div>
-      <div class="larger">
-        <div class="language-container">
-          <div class="language">
-            <span role="img" aria-label="English">🇺🇸</span>
-            <span class="native-name">English</span>
-            <span class="english-name">English</span>
-            <p><em>Native</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Japanese">🇯🇵</span>
-            <span class="native-name">日本語</span>
-            <span class="english-name">Japanese</span>
-            <p><em>Proficient</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="French">🇫🇷</span>
-            <span class="native-name">Français</span>
-            <span class="english-name">French</span>
-            <p><em>Proficient</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Russian">🇷🇺</span>
-            <span class="native-name">Русский</span>
-            <span class="english-name">Russian</span>
-            <p><em>Proficient</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Chinese">🇨🇳</span>
-            <span class="native-name">中文</span>
-            <span class="english-name">Chinese</span>
-            <p><em>Proficient</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Arabic">🇸🇾</span>
-            <span class="native-name">العربية</span>
-            <span class="english-name">Arabic</span>
-            <p><em>Heritage</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Spanish">🇪🇸</span>
-            <span class="native-name">Español</span>
-            <span class="english-name">Spanish</span>
-            <p><em>Intermediate</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Polish">🇵🇱</span>
-            <span class="native-name">Polski</span>
-            <span class="english-name">Polish</span>
-            <p><em>Elementary</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Korean">🇰🇷</span>
-            <span class="native-name">한국어</span>
-            <span class="english-name">Korean</span>
-            <p><em>Elementary</em></p>
-          </div>
-          <div class="language">
-            <span role="img" aria-label="Vietnamese">🇻🇳</span>
-            <span class="native-name">Tiếng Việt</span>
-            <span class="english-name">Vietnamese</span>
-            <p><em>Elementary</em></p>
-          </div>
-          <div class="language centered">
-            <p><em>...and always learning more!</em></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="youtube">
-      <div class="smaller">
-        <h2>YouTube</h2>
-      </div>
-      <div class="larger centered">
-        <a class="button">Coming soon!</a>
-      </div>
-    </section>
-
     <script>
-      document.querySelectorAll(".language").forEach(function (lang) {
-        lang.addEventListener("click", function () {
-          this.classList.toggle("active");
+      // ==================== DATA STORES ====================
+
+      const navigationItems = [
+        { href: "", text: "Kinan Martin" },
+        { href: "#news", text: "News" },
+        { href: "#publications", text: "Publications" },
+        {
+          href: "files/Kinan_Martin_Resume.pdf",
+          text: "Resume",
+          target: "_blank",
+        },
+        { href: "#languages", text: "Languages" },
+        { href: "#youtube", text: "YouTube" },
+      ];
+
+      const socialLinks = [
+        {
+          href: "https://www.linkedin.com/in/kinan-martin-89900b208/",
+          icon: "fa-brands fa-linkedin-in",
+          label: "LinkedIn",
+        },
+        {
+          href: "https://scholar.google.com/citations?user=XRTlOoMAAAAJ&hl=en",
+          icon: "fa-solid fa-graduation-cap",
+          label: "Google Scholar",
+        },
+        {
+          href: "https://github.com/kinanmartin",
+          icon: "fa-brands fa-github",
+          label: "GitHub",
+        },
+        {
+          href: "https://www.instagram.com/kinan_martin/",
+          icon: "fa-brands fa-instagram",
+          label: "Instagram",
+        },
+      ];
+
+      const aboutParagraphs = [
+        `I'm <strong>Kinan Martin</strong>, a current Master of Engineering student of Computer and Cognitive
+        Sciences at MIT (Course 6-9 MEng). My motivation is to
+        <strong>use natural language processing systems to build meaningful connections</strong>.
+        I have experience researching, designing, and implementing a variety
+        of text-based, speech-based, and vision-based multi-modal NLP models.
+        I've applied these models to a wide range of use cases, including
+        psycholinguistic, clinical, driving, and commercial applications.`,
+
+        `I'm currently working at
+        <a href="https://reazon.jp" class="text-blue-600 hover:text-blue-800 underline">Reazon Holdings</a>
+        --
+        <a href="https://research.reazon.jp/index.html" class="text-blue-600 hover:text-blue-800 underline">
+          Human Interaction Laboratory
+        </a>
+        in Tokyo, Japan, but will probably be back in the US around September.`,
+
+        `Before this, I worked at the
+        <a href="http://cpl.mit.edu" class="text-blue-600 hover:text-blue-800 underline">Computational Psycholinguistics Lab</a>
+        under
+        <a href="https://www.mit.edu/~rplevy/index.html" class="text-blue-600 hover:text-blue-800 underline">Roger Levy</a>
+        on my thesis about probing text and speech based large language models
+        for natural language understanding.`,
+
+        `I love learning languages. Currently I speak
+        <b><a href="#languages" class="text-blue-600 hover:text-blue-800 underline">10 languages</a></b>
+        at different levels of fluency, and I'm always learning more!`,
+      ];
+
+      const newsItems = [
+        {
+          date: "2024/06",
+          content: `Started work at <a href="https://reazon.jp" class="text-blue-600 hover:text-blue-800 underline">Reazon Holdings</a>
+          -- <a href="https://research.reazon.jp/index.html" class="text-blue-600 hover:text-blue-800 underline">Human Interaction Laboratory</a>
+          doing NLP, Spoken Language Processing, and Robotics R&D in Tokyo, Japan 🇯🇵`,
+        },
+        {
+          date: "2024/05",
+          content:
+            "Graduated with Master of Science in Computation and Cognition from MIT! 🎓🎓🎉🎉",
+        },
+        {
+          date: "2024/01",
+          content: `Teaching Python and web dev through
+          <a href="https://misti.mit.edu/mit-arab-world" class="text-blue-600 hover:text-blue-800 underline">MIT-Arab World Global Teaching Labs</a>
+          at <a href="https://injaz.org.jo" class="text-blue-600 hover:text-blue-800 underline">INJAZ</a> in Amman, Jordan 🇯🇴`,
+        },
+        {
+          date: "2023/09",
+          content:
+            "Began Master of Engineering in Computation in Cognition at MIT 🙏",
+        },
+        {
+          date: "2023/08",
+          content: `Presented <a href="https://arxiv.org/abs/2306.06232" target="_blank" class="text-blue-600 hover:text-blue-800 underline">paper</a>
+          on probing self-supervised speech models at
+          <a href="https://interspeech2023.org" class="text-blue-600 hover:text-blue-800 underline">INTERSPEECH 2023</a> in Dublin, Ireland 🇮🇪`,
+        },
+        {
+          date: "2023/06-08",
+          content: `Interned at <a href="https://www.hh-ri.com/ai/" class="text-blue-600 hover:text-blue-800 underline">
+          Foxconn: Hon Hai Research Institute in the Artificial Intelligence Department (鴻海研究院人工智慧所)</a> in Taipei, Taiwan 🇹🇼`,
+        },
+        {
+          date: "2023/05",
+          content:
+            "Graduated with Bachelor of Science in Computation and Cognition from MIT! 🎓🎉",
+        },
+      ];
+
+      const publications = [
+        {
+          title:
+            "Probing self-supervised speech models for phonetic and phonemic information: a case study in aspiration",
+          authors: [
+            "Kinan Martin",
+            "Jon Gauthier",
+            "Canaan Breiss",
+            "Roger Levy",
+          ],
+          date: "August 2023",
+          publisher: "INTERSPEECH 2023",
+          link: "https://arxiv.org/abs/2306.06232",
+        },
+        {
+          title:
+            "PLN CMM at SocialDisNER: Improving Detection of Disease Mentions in Tweets by Using Document-Level Features",
+          authors: [
+            "Matías Rojas",
+            "Jose Barros",
+            "Kinan Martin",
+            "Mauricio Araneda-Hernandez",
+            "Jocelyn Dunstan",
+          ],
+          date: "October 2022",
+          publisher: "Association for Computational Linguistics",
+          link: "https://aclanthology.org/2022.smm4h-1.15/",
+        },
+        {
+          title:
+            "Training and intrinsic evaluation of lightweight word embeddings for the clinical domain in Spanish",
+          authors: [
+            "Carolina Chiu",
+            "Fabián Villena",
+            "Kinan Martin",
+            "Fredy Núñez",
+            "Cecilia Besa",
+            "Jocelyn Dunstan",
+          ],
+          date: "September 2022",
+          publisher: "Frontiers",
+          link: "https://www.frontiersin.org/articles/10.3389/frai.2022.970517/full",
+        },
+        {
+          title:
+            "Poor writing, not specialized concepts, drives processing difficulty in legal language",
+          authors: ["Eric Martínez", "Francis Mollica", "Edward Gibson"],
+          date: "July 2022",
+          publisher: "Cognition",
+          link: "https://www.sciencedirect.com/science/article/pii/S0010027722000580",
+        },
+      ];
+
+      const languagesData = [
+        { flag: "🇺🇸", native: "English", english: "English", level: "Native" },
+        {
+          flag: "🇯🇵",
+          native: "日本語",
+          english: "Japanese",
+          level: "Proficient",
+        },
+        {
+          flag: "🇫🇷",
+          native: "Français",
+          english: "French",
+          level: "Proficient",
+        },
+        {
+          flag: "🇷🇺",
+          native: "Русский",
+          english: "Russian",
+          level: "Proficient",
+        },
+        { flag: "🇨🇳", native: "中文", english: "Chinese", level: "Proficient" },
+        { flag: "🇸🇾", native: "العربية", english: "Arabic", level: "Heritage" },
+        {
+          flag: "🇪🇸",
+          native: "Español",
+          english: "Spanish",
+          level: "Intermediate",
+        },
+        {
+          flag: "🇵🇱",
+          native: "Polski",
+          english: "Polish",
+          level: "Elementary",
+        },
+        {
+          flag: "🇰🇷",
+          native: "한국어",
+          english: "Korean",
+          level: "Elementary",
+        },
+        {
+          flag: "🇻🇳",
+          native: "Tiếng Việt",
+          english: "Vietnamese",
+          level: "Elementary",
+        },
+      ];
+
+      // ==================== COMPONENT GENERATORS ====================
+
+      // Navigation Component
+      function renderNavigation() {
+        const nav = document.getElementById("navigation");
+        const ul = document.createElement("ul");
+        ul.className =
+          "list-none flex flex-wrap justify-center items-center gap-6";
+
+        navigationItems.forEach((item) => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = item.href;
+          a.className =
+            "text-white font-bold hover:text-blue-300 transition-colors";
+          a.textContent = item.text;
+          if (item.target) a.target = item.target;
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+
+        nav.appendChild(ul);
+      }
+
+      // Social Links Component
+      function renderSocialLinks() {
+        const container = document.getElementById("social-links");
+
+        socialLinks.forEach((link) => {
+          const a = document.createElement("a");
+          a.href = link.href;
+          a.target = "_blank";
+          a.className = "text-blue-700 hover:text-blue-500 transition-colors";
+          a.innerHTML = `<i class="${link.icon}" aria-label="${link.label}"></i>`;
+          container.appendChild(a);
+        });
+      }
+
+      // About Content Component
+      function renderAboutContent() {
+        const container = document.getElementById("about-content");
+
+        aboutParagraphs.forEach((paragraph) => {
+          const p = document.createElement("p");
+          p.innerHTML = paragraph;
+          container.appendChild(p);
+        });
+      }
+
+      // News Component
+      function renderNews() {
+        const newsList = document.getElementById("news-list");
+
+        newsItems.forEach((item) => {
+          const li = document.createElement("li");
+          li.className = "flex gap-3";
+          li.innerHTML = `
+            <span class="text-blue-600 mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+            <p><b>${item.date}:</b> ${item.content}</p>
+          `;
+          newsList.appendChild(li);
+        });
+
+        // Add the "more items" indicator
+        const moreLi = document.createElement("li");
+        moreLi.className = "text-xs text-gray-500 text-center pt-4";
+        moreLi.textContent = "[以下省略]";
+        newsList.appendChild(moreLi);
+      }
+
+      // Publications Component
+      function renderPublications() {
+        const papersContainer = document.getElementById("papers");
+
+        publications.forEach((pub) => {
+          const li = document.createElement("li");
+          li.className =
+            "paper group bg-gray-50 border-l-4 border-gray-400 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300";
+
+          const authorsHtml = pub.authors
+            .map((author) =>
+              author === "Kinan Martin" ? `<strong>${author}</strong>` : author,
+            )
+            .join(", ");
+
+          li.innerHTML = `
+            <a href="${pub.link}" target="_blank" class="block p-6">
+              <div class="flex gap-3">
+                <span class="text-gray-600 group-hover:text-blue-600 mt-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+                <div class="flex-1">
+                  <p class="font-bold text-lg mb-2">${pub.title}</p>
+                  <p class="text-sm text-gray-600 mb-2">${authorsHtml}</p>
+                  <div class="flex justify-between text-sm">
+                    <p class="italic text-gray-500">${pub.date}</p>
+                    <p class="font-semibold">${pub.publisher}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          `;
+
+          papersContainer.appendChild(li);
+        });
+      }
+
+      // Languages Component
+      function renderLanguages() {
+        const container = document.getElementById("language-container");
+
+        languagesData.forEach((lang) => {
+          const div = document.createElement("div");
+          div.className =
+            "language group cursor-pointer bg-gray-50 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-400 rounded-xl p-4 text-center transition-all duration-300";
+          div.innerHTML = `
+            <span role="img" aria-label="${lang.english}" class="text-6xl block mb-2">${lang.flag}</span>
+            <span class="native-name font-bold text-lg block group-hover:hidden">${lang.native}</span>
+            <span class="english-name font-bold text-lg hidden group-hover:block text-blue-600">${lang.english}</span>
+            <p class="text-sm italic mt-1">${lang.level}</p>
+          `;
+          container.appendChild(div);
+        });
+
+        // Add the "learning more" message
+        const moreDiv = document.createElement("div");
+        moreDiv.className =
+          "col-span-2 md:col-span-3 lg:col-span-4 text-center pt-4";
+        moreDiv.innerHTML =
+          '<p class="text-lg italic text-gray-600">...and always learning more!</p>';
+        container.appendChild(moreDiv);
+      }
+
+      // ==================== HELLO ANIMATION ====================
+
+      const helloLanguages = [
+        [
+          "k",
+          "こ",
+          "こn",
+          "こん",
+          "こんn",
+          "こんに",
+          "こんにt",
+          "こんにち",
+          "こんにちh",
+          "こんにちは",
+          "こんにちは！",
+          "こんにちは！🇯🇵",
+        ],
+        ["П", "Пр", "При", "Прив", "Приве", "Привет", "Привет!", "Привет! 🇷🇺"],
+        ["S", "Sa", "Sal", "Salu", "Salut", "Salut ", "Salut !", "Salut ! 🇫🇷"],
+        ["H", "He", "Hel", "Hell", "Hello", "Hello!", "Hello! 🇺🇸"],
+        [
+          "n",
+          "ni",
+          "你",
+          "你h",
+          "你ha",
+          "你hao",
+          "你好",
+          "你好！",
+          "你好！🇨🇳",
+          "你好！🇨🇳🇹🇼",
+        ],
+        [
+          "ا",
+          "ال",
+          "الس",
+          "السل",
+          "السلا",
+          "السلام",
+          "السلام ",
+          "السلام ع",
+          "السلام عل",
+          "السلام علي",
+          "السلام عليك",
+          "السلام عليكم",
+          "السلام عليكم!",
+          "السلام عليكم! 🇸🇾",
+        ],
+        ["¡", "¡H", "¡Ho", "¡Hol", "¡Hola", "¡Hola!", "¡Hola! 🇨🇱"],
+        [
+          "ㅇ",
+          "아",
+          "안",
+          "안ㄴ",
+          "안녀",
+          "안녕",
+          "안녕ㅎ",
+          "안녕하",
+          "안녕하ㅅ",
+          "안녕하세",
+          "안녕하세ㅇ",
+          "안녕하세요",
+          "안녕하세요!",
+          "안녕하세요! 🇰🇷",
+        ],
+        ["C", "Cz", "Cze", "Cześ", "Cześć", "Cześć!", "Cześć! 🇵🇱"],
+        [
+          "X",
+          "Xi",
+          "Xin",
+          "Xin ",
+          "Xin c",
+          "Xin ch",
+          "Xin cha",
+          "Xin chao",
+          "Xin chào",
+          "Xin chào!",
+          "Xin chào! 🇻🇳",
+        ],
+      ];
+
+      const rtl_languages = [5];
+      let cycleSpeed = 5000;
+      let typeSpeed = 100;
+
+      function typeText(id, index) {
+        const text = helloLanguages[index];
+        const textElement = document.getElementById(id);
+        let i = 0;
+
+        if (rtl_languages.includes(index)) {
+          textElement.classList.remove("ltr-border");
+          textElement.classList.add("rtl-border");
+        } else {
+          textElement.classList.remove("rtl-border");
+          textElement.classList.add("ltr-border");
+        }
+
+        function typeNextCharacter() {
+          if (i <= text.length) {
+            if (typeof text === "string") {
+              textElement.textContent = text.slice(0, i);
+            } else {
+              textElement.textContent = text[i - 1];
+            }
+            i++;
+            setTimeout(typeNextCharacter, typeSpeed);
+          }
+        }
+
+        typeNextCharacter();
+      }
+
+      let currentLanguageIndex = 0;
+
+      function cycleText() {
+        typeText("hello", currentLanguageIndex);
+        currentLanguageIndex =
+          (currentLanguageIndex + 1) % helloLanguages.length;
+        setTimeout(cycleText, cycleSpeed);
+      }
+
+      // ==================== INITIALIZATION ====================
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Render all components
+        renderNavigation();
+        renderSocialLinks();
+        renderAboutContent();
+        renderNews();
+        renderPublications();
+        renderLanguages();
+
+        // Start hello animation
+        cycleText();
+
+        // Language card click functionality
+        document.querySelectorAll(".language").forEach(function (lang) {
+          lang.addEventListener("click", function () {
+            this.classList.toggle("active");
+          });
         });
       });
     </script>
