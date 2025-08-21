@@ -50,123 +50,154 @@
     </style>
   </head>
   <body class="font-sans text-gray-800 leading-relaxed bg-gray-100">
-    <!-- Navigation will be injected here -->
+    <!-- Navigation -->
     <nav
       id="navigation"
-      class="bg-gray-900 text-white text-center py-4 sticky top-0 z-50 shadow-lg"
-    ></nav>
-
-    <!-- Introduction Section -->
-    <section
-      id="introduction"
-      class="max-w-6xl mx-auto px-4 py-12 bg-white mt-8 rounded-lg shadow-md"
+      class="bg-gray-900 text-white py-3 md:py-4 sticky top-0 z-50 shadow-lg"
     >
-      <div class="flex flex-wrap items-start justify-center gap-8">
-        <!-- Profile -->
-        <div id="profile" class="text-center w-full md:w-1/3 lg:w-1/4">
-          <img
-            src="img/headshot.jpeg"
-            alt="Me in Howth, Ireland"
-            class="w-full max-w-xs mx-auto rounded-lg shadow-lg mb-4"
-          />
-          <h2 id="name" class="text-3xl font-bold mb-2">Kinan Martin</h2>
-          <p class="mb-3">
-            <code class="bg-gray-100 px-2 py-1 rounded">
-              kinanmartin0 _ gmail _ com
-            </code>
-          </p>
-          <div
-            id="social-links"
-            class="flex justify-center gap-4 text-2xl"
-          ></div>
-        </div>
+      <!-- Nav will be injected here -->
+    </nav>
 
-        <!-- About Me -->
-        <div id="about_me" class="flex-1 min-w-0 md:min-w-[400px]">
-          <h1
-            id="hello"
-            class="text-5xl lg:text-6xl font-bold mb-6 h-20 animate-caret ltr-border"
-          ></h1>
-          <div id="about-content" class="space-y-4 text-lg"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="max-w-6xl mx-auto px-4 py-12 mt-8">
-      <div class="bg-white rounded-lg shadow-md p-8">
-        <h2 class="text-3xl font-bold text-center mb-8">News</h2>
-        <div class="bg-gray-50 border-l-4 border-blue-600 rounded-lg p-6">
-          <ul id="news-list" class="space-y-6"></ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications" class="max-w-6xl mx-auto px-4 py-12">
-      <div class="bg-white rounded-lg shadow-md p-8">
-        <h2 class="text-3xl font-bold text-center mb-8">Publications</h2>
-        <ul id="papers" class="space-y-4"></ul>
-      </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="max-w-6xl mx-auto px-4 py-12">
-      <div class="bg-white rounded-lg shadow-md p-8">
-        <h2 class="text-3xl font-bold text-center mb-8">Resume</h2>
-        <div class="flex justify-center">
-          <a
-            href="files/Kinan_Martin_Resume.pdf"
-            target="_blank"
-            class="block bg-gray-100 hover:bg-gray-200 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 p-8"
-          >
+    <!-- Main Content Container -->
+    <div class="container mx-auto px-4 md:px-6 max-w-6xl">
+      <!-- Introduction Section -->
+      <section
+        id="introduction"
+        class="bg-white mt-6 md:mt-8 rounded-lg shadow-md p-6 md:p-8"
+      >
+        <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+          <!-- Profile - Full width on mobile, fixed width on desktop -->
+          <div id="profile" class="text-center md:w-72">
+            <img
+              src="img/headshot.jpeg"
+              alt="Me in Howth, Ireland"
+              class="w-48 md:w-full mx-auto rounded-lg shadow-lg mb-4"
+            />
+            <h2 id="name" class="text-2xl md:text-3xl font-bold mb-2">
+              Kinan Martin
+            </h2>
+            <p class="mb-3 text-sm md:text-base">
+              <code class="bg-gray-100 px-2 py-1 rounded text-xs md:text-sm">
+                kinanmartin0 _ gmail _ com
+              </code>
+            </p>
             <div
-              class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 text-center"
-            >
-              <i class="fa-solid fa-file-pdf text-6xl mb-4"></i>
-              <p class="text-xl font-semibold">View Resume (PDF)</p>
-            </div>
-          </a>
+              id="social-links"
+              class="flex justify-center gap-4 text-xl md:text-2xl"
+            ></div>
+          </div>
+
+          <!-- About Me - Full width on mobile, flexible on desktop -->
+          <div id="about_me" class="flex-1">
+            <h1
+              id="hello"
+              class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 h-12 md:h-20 animate-caret ltr-border"
+            ></h1>
+            <div
+              id="about-content"
+              class="space-y-3 md:space-y-4 text-base md:text-lg"
+            ></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Languages Section -->
-    <section id="languages" class="max-w-6xl mx-auto px-4 py-12">
-      <div class="bg-white rounded-lg shadow-md p-8">
-        <h2 class="text-3xl font-bold text-center mb-8">Languages</h2>
-        <div
-          id="language-container"
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        ></div>
-      </div>
-    </section>
-
-    <!-- YouTube Section -->
-    <section id="youtube" class="max-w-6xl mx-auto px-4 py-12 mb-8">
-      <div class="bg-white rounded-lg shadow-md p-12 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
+      <!-- News Section -->
+      <section id="news" class="mt-6 md:mt-8">
+        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
+            News
+          </h2>
           <div
-            class="animate-slide-bg"
-            style="
-              width: 3600px;
-              height: 100%;
-              background: url(img/world_flags.png) repeat-x;
-            "
-          ></div>
+            class="bg-gray-50 border-l-4 border-blue-600 rounded-lg p-4 md:p-6"
+          >
+            <ul
+              id="news-list"
+              class="space-y-4 md:space-y-6 text-sm md:text-base"
+            ></ul>
+          </div>
         </div>
-        <div class="relative z-10">
-          <h2 class="text-3xl font-bold text-center mb-8">YouTube</h2>
-          <div class="text-center">
+      </section>
+
+      <!-- Publications Section -->
+      <section id="publications" class="mt-6 md:mt-8">
+        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
+            Publications
+          </h2>
+          <ul id="papers" class="space-y-3 md:space-y-4"></ul>
+        </div>
+      </section>
+
+      <!-- Resume Section -->
+      <section id="resume" class="mt-6 md:mt-8">
+        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
+            Resume
+          </h2>
+          <div class="flex justify-center">
             <a
-              class="inline-block bg-gray-800 bg-opacity-70 border-4 border-gray-300 text-white px-8 py-4 text-2xl rounded-lg hover:bg-opacity-90 transition-all duration-300"
+              href="files/Kinan_Martin_Resume.pdf"
+              target="_blank"
+              class="block bg-gray-100 hover:bg-gray-200 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 p-6 md:p-8"
             >
-              Coming soon!
+              <div
+                class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-4 md:p-6 text-center"
+              >
+                <i
+                  class="fa-solid fa-file-pdf text-4xl md:text-6xl mb-3 md:mb-4"
+                ></i>
+                <p class="text-lg md:text-xl font-semibold">
+                  View Resume (PDF)
+                </p>
+              </div>
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- Languages Section -->
+      <section id="languages" class="mt-6 md:mt-8">
+        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
+            Languages
+          </h2>
+          <div
+            id="language-container"
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+          ></div>
+        </div>
+      </section>
+
+      <!-- YouTube Section -->
+      <section id="youtube" class="mt-6 md:mt-8 mb-6 md:mb-8">
+        <div
+          class="bg-white rounded-lg shadow-md p-8 md:p-12 relative overflow-hidden"
+        >
+          <div class="absolute inset-0 opacity-20">
+            <div
+              class="animate-slide-bg"
+              style="
+                width: 3600px;
+                height: 100%;
+                background: url(img/world_flags.png) repeat-x;
+              "
+            ></div>
+          </div>
+          <div class="relative z-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
+              YouTube
+            </h2>
+            <div class="text-center">
+              <a
+                class="inline-block bg-gray-800 bg-opacity-70 border-4 border-gray-300 text-white px-6 md:px-8 py-3 md:py-4 text-xl md:text-2xl rounded-lg hover:bg-opacity-90 transition-all duration-300"
+              >
+                Coming soon!
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <script>
       // ==================== DATA STORES ====================
@@ -383,9 +414,14 @@
       // Navigation Component
       function renderNavigation() {
         const nav = document.getElementById("navigation");
-        const ul = document.createElement("ul");
-        ul.className =
-          "list-none flex flex-wrap justify-center items-center gap-6";
+        nav.innerHTML = `
+          <div class="container mx-auto px-4 md:px-6 max-w-6xl">
+            <ul class="list-none flex flex-wrap justify-center items-center gap-3 md:gap-6 text-sm md:text-base">
+            </ul>
+          </div>
+        `;
+
+        const ul = nav.querySelector("ul");
 
         navigationItems.forEach((item) => {
           const li = document.createElement("li");
@@ -398,8 +434,6 @@
           li.appendChild(a);
           ul.appendChild(li);
         });
-
-        nav.appendChild(ul);
       }
 
       // Social Links Component
@@ -433,9 +467,9 @@
 
         newsItems.forEach((item) => {
           const li = document.createElement("li");
-          li.className = "flex gap-3";
+          li.className = "flex gap-2 md:gap-3";
           li.innerHTML = `
-            <span class="text-blue-600 mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+            <span class="text-blue-600 mt-0.5 md:mt-1 flex-shrink-0"><i class="fa-solid fa-arrow-right"></i></span>
             <p><b>${item.date}:</b> ${item.content}</p>
           `;
           newsList.appendChild(li);
@@ -464,15 +498,15 @@
             .join(", ");
 
           li.innerHTML = `
-            <a href="${pub.link}" target="_blank" class="block p-6">
-              <div class="flex gap-3">
-                <span class="text-gray-600 group-hover:text-blue-600 mt-1">
+            <a href="${pub.link}" target="_blank" class="block p-4 md:p-6">
+              <div class="flex gap-2 md:gap-3">
+                <span class="text-gray-600 group-hover:text-blue-600 mt-0.5 md:mt-1 flex-shrink-0">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </span>
-                <div class="flex-1">
-                  <p class="font-bold text-lg mb-2">${pub.title}</p>
-                  <p class="text-sm text-gray-600 mb-2">${authorsHtml}</p>
-                  <div class="flex justify-between text-sm">
+                <div class="flex-1 min-w-0">
+                  <p class="font-bold text-base md:text-lg mb-2">${pub.title}</p>
+                  <p class="text-xs md:text-sm text-gray-600 mb-2">${authorsHtml}</p>
+                  <div class="flex flex-col sm:flex-row sm:justify-between text-xs md:text-sm gap-1 sm:gap-0">
                     <p class="italic text-gray-500">${pub.date}</p>
                     <p class="font-semibold">${pub.publisher}</p>
                   </div>
@@ -492,12 +526,12 @@
         languagesData.forEach((lang) => {
           const div = document.createElement("div");
           div.className =
-            "language group cursor-pointer bg-gray-50 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-400 rounded-xl p-4 text-center transition-all duration-300";
+            "language group cursor-pointer bg-gray-50 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-400 rounded-xl p-3 md:p-4 text-center transition-all duration-300";
           div.innerHTML = `
-            <span role="img" aria-label="${lang.english}" class="text-6xl block mb-2">${lang.flag}</span>
-            <span class="native-name font-bold text-lg block group-hover:hidden">${lang.native}</span>
-            <span class="english-name font-bold text-lg hidden group-hover:block text-blue-600">${lang.english}</span>
-            <p class="text-sm italic mt-1">${lang.level}</p>
+            <span role="img" aria-label="${lang.english}" class="text-4xl md:text-5xl lg:text-6xl block mb-1 md:mb-2">${lang.flag}</span>
+            <span class="native-name font-bold text-sm md:text-base lg:text-lg block group-hover:hidden">${lang.native}</span>
+            <span class="english-name font-bold text-sm md:text-base lg:text-lg hidden group-hover:block text-blue-600">${lang.english}</span>
+            <p class="text-xs md:text-sm italic mt-1">${lang.level}</p>
           `;
           container.appendChild(div);
         });
@@ -507,7 +541,7 @@
         moreDiv.className =
           "col-span-2 md:col-span-3 lg:col-span-4 text-center pt-4";
         moreDiv.innerHTML =
-          '<p class="text-lg italic text-gray-600">...and always learning more!</p>';
+          '<p class="text-base md:text-lg italic text-gray-600">...and always learning more!</p>';
         container.appendChild(moreDiv);
       }
 
