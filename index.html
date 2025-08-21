@@ -9,12 +9,17 @@
       src="https://kit.fontawesome.com/05d09269ad.js"
       crossorigin="anonymous"
     ></script>
+    <!-- Twemoji for consistent flag rendering across all platforms -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Kinan Martin</title>
     <style>
       /* Custom animations and special styles that Tailwind doesn't cover */
       @keyframes caret {
         50% {
-          border-color: transparent;
+          opacity: 0;
         }
       }
 
@@ -35,17 +40,63 @@
         animation: slideBackground 20s linear 0s infinite;
       }
 
-      /* RTL support for hello animation */
-      .rtl-border {
-        direction: rtl;
-        border-left: 0.1em solid;
-        border-right: none;
+      /* Caret cursor styles using pseudo-element */
+      #hello {
+        position: relative;
+        padding-right: 0.15em;
       }
 
-      .ltr-border {
-        direction: ltr;
-        border-right: 0.1em solid;
-        border-left: none;
+      #hello::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -0.05em;
+        height: 1.1em;
+        width: 0.1em;
+        background-color: currentColor;
+        animation: caret 1s steps(1) infinite;
+      }
+
+      /* RTL support for hello animation */
+      #hello.rtl-text {
+        direction: rtl;
+        padding-right: 0;
+        padding-left: 0.15em;
+      }
+
+      #hello.rtl-text::after {
+        right: auto;
+        left: 0;
+      }
+
+      /* Twemoji styles for consistent emoji display */
+      img.emoji {
+        height: 0.95em;
+        width: 0.95em;
+        margin: 0 0.05em 0 0.1em;
+        vertical-align: -0.1em;
+        display: inline-block;
+      }
+
+      /* Larger emojis for language cards */
+      .language-flag img.emoji {
+        height: 3rem !important;
+        width: 3rem !important;
+        margin: 0 auto 0.5rem auto !important;
+      }
+
+      @media (min-width: 768px) {
+        .language-flag img.emoji {
+          height: 3.5rem !important;
+          width: 3.5rem !important;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .language-flag img.emoji {
+          height: 4rem !important;
+          width: 4rem !important;
+        }
       }
     </style>
   </head>
@@ -91,7 +142,7 @@
           <div id="about_me" class="flex-1">
             <h1
               id="hello"
-              class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 h-12 md:h-20 animate-caret ltr-border"
+              class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 h-12 md:h-20 inline-block"
             ></h1>
             <div
               id="about-content"
@@ -528,7 +579,7 @@
           div.className =
             "language group cursor-pointer bg-gray-50 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-400 rounded-xl p-3 md:p-4 text-center transition-all duration-300";
           div.innerHTML = `
-            <span role="img" aria-label="${lang.english}" class="text-4xl md:text-5xl lg:text-6xl block mb-1 md:mb-2">${lang.flag}</span>
+            <span role="img" aria-label="${lang.english}" class="language-flag text-4xl md:text-5xl lg:text-6xl block mb-1 md:mb-2">${lang.flag}</span>
             <span class="native-name font-bold text-sm md:text-base lg:text-lg block group-hover:hidden">${lang.native}</span>
             <span class="english-name font-bold text-sm md:text-base lg:text-lg hidden group-hover:block text-blue-600">${lang.english}</span>
             <p class="text-xs md:text-sm italic mt-1">${lang.level}</p>
@@ -543,6 +594,13 @@
         moreDiv.innerHTML =
           '<p class="text-base md:text-lg italic text-gray-600">...and always learning more!</p>';
         container.appendChild(moreDiv);
+
+        // Apply Twemoji to language flags after they're rendered
+        twemoji.parse(container, {
+          folder: "svg",
+          ext: ".svg",
+          className: "emoji",
+        });
       }
 
       // ==================== HELLO ANIMATION ====================
@@ -635,21 +693,44 @@
         const textElement = document.getElementById(id);
         let i = 0;
 
+        // Handle RTL languages
         if (rtl_languages.includes(index)) {
-          textElement.classList.remove("ltr-border");
-          textElement.classList.add("rtl-border");
+          textElement.classList.add("rtl-text");
         } else {
-          textElement.classList.remove("rtl-border");
-          textElement.classList.add("ltr-border");
+          textElement.classList.remove("rtl-text");
         }
 
         function typeNextCharacter() {
           if (i <= text.length) {
+            let currentText;
             if (typeof text === "string") {
-              textElement.textContent = text.slice(0, i);
+              currentText = text.slice(0, i);
             } else {
-              textElement.textContent = text[i - 1];
+              currentText = text[i - 1] || "";
             }
+            textElement.textContent = currentText;
+
+            // Apply Twemoji to the hello text for flag emojis
+            if (
+              currentText.includes("🇯🇵") ||
+              currentText.includes("🇷🇺") ||
+              currentText.includes("🇫🇷") ||
+              currentText.includes("🇺🇸") ||
+              currentText.includes("🇨🇳") ||
+              currentText.includes("🇹🇼") ||
+              currentText.includes("🇸🇾") ||
+              currentText.includes("🇨🇱") ||
+              currentText.includes("🇰🇷") ||
+              currentText.includes("🇵🇱") ||
+              currentText.includes("🇻🇳")
+            ) {
+              twemoji.parse(textElement, {
+                folder: "svg",
+                ext: ".svg",
+                className: "emoji",
+              });
+            }
+
             i++;
             setTimeout(typeNextCharacter, typeSpeed);
           }
@@ -676,10 +757,20 @@
         renderAboutContent();
         renderNews();
         renderPublications();
-        renderLanguages();
+        renderLanguages(); // This now includes Twemoji parsing
 
         // Start hello animation
         cycleText();
+
+        // Apply Twemoji to any other emojis in the news section
+        const newsSection = document.getElementById("news-list");
+        if (newsSection) {
+          twemoji.parse(newsSection, {
+            folder: "svg",
+            ext: ".svg",
+            className: "emoji",
+          });
+        }
 
         // Language card click functionality
         document.querySelectorAll(".language").forEach(function (lang) {
