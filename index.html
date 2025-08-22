@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind config for dark mode
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
     <link rel="icon" href="favicon.ico" />
     <script
       src="https://kit.fontawesome.com/05d09269ad.js"
@@ -98,13 +104,38 @@
           width: 4rem !important;
         }
       }
+
+      /* Smooth transitions for dark mode */
+      * {
+        transition:
+          background-color 0.2s ease,
+          border-color 0.2s ease;
+      }
     </style>
+    <script>
+      // Dark mode initialization script (runs before page load to prevent flash)
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          // No saved preference, use system preference
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.documentElement.classList.add("dark");
+          }
+        }
+      })();
+    </script>
   </head>
-  <body class="font-sans text-gray-800 leading-relaxed bg-gray-100">
+  <body
+    class="font-sans text-gray-800 dark:text-gray-200 leading-relaxed bg-gray-100 dark:bg-gray-900"
+  >
     <!-- Navigation -->
     <nav
       id="navigation"
-      class="bg-gray-900 text-white py-3 md:py-4 sticky top-0 z-50 shadow-lg"
+      class="bg-gray-900 dark:bg-gray-950 text-white py-3 md:py-4 sticky top-0 z-50 shadow-lg"
     >
       <!-- Nav will be injected here -->
     </nav>
@@ -114,7 +145,7 @@
       <!-- Introduction Section -->
       <section
         id="introduction"
-        class="bg-white mt-6 md:mt-8 rounded-lg shadow-md p-6 md:p-8"
+        class="bg-white dark:bg-gray-800 mt-6 md:mt-8 rounded-lg shadow-md dark:shadow-xl p-6 md:p-8"
       >
         <div class="flex flex-col md:flex-row gap-6 md:gap-8">
           <!-- Profile - Full width on mobile, fixed width on desktop -->
@@ -128,7 +159,9 @@
               Kinan Martin
             </h2>
             <p class="mb-3 text-sm md:text-base">
-              <code class="bg-gray-100 px-2 py-1 rounded text-xs md:text-sm">
+              <code
+                class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-xs md:text-sm"
+              >
                 kinanmartin0 _ gmail _ com
               </code>
             </p>
@@ -142,7 +175,7 @@
           <div id="about_me" class="flex-1">
             <h1
               id="hello"
-              class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 h-12 md:h-20 inline-block"
+              class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 h-12 md:h-20 inline-block dark:text-white"
             ></h1>
             <div
               id="about-content"
@@ -154,12 +187,14 @@
 
       <!-- News Section -->
       <section id="news" class="mt-6 md:mt-8">
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-xl p-6 md:p-8"
+        >
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
             News
           </h2>
           <div
-            class="bg-gray-50 border-l-4 border-blue-600 rounded-lg p-4 md:p-6"
+            class="bg-gray-50 dark:bg-gray-700 border-l-4 border-blue-600 dark:border-blue-400 rounded-lg p-4 md:p-6"
           >
             <ul
               id="news-list"
@@ -171,7 +206,9 @@
 
       <!-- Publications Section -->
       <section id="publications" class="mt-6 md:mt-8">
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-xl p-6 md:p-8"
+        >
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
             Publications
           </h2>
@@ -181,7 +218,9 @@
 
       <!-- Resume Section -->
       <section id="resume" class="mt-6 md:mt-8">
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-xl p-6 md:p-8"
+        >
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
             Resume
           </h2>
@@ -189,10 +228,10 @@
             <a
               href="files/Kinan_Martin_Resume.pdf"
               target="_blank"
-              class="block bg-gray-100 hover:bg-gray-200 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 p-6 md:p-8"
+              class="block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 p-6 md:p-8"
             >
               <div
-                class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-4 md:p-6 text-center"
+                class="bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-600 dark:to-purple-700 text-white rounded-lg p-4 md:p-6 text-center"
               >
                 <i
                   class="fa-solid fa-file-pdf text-4xl md:text-6xl mb-3 md:mb-4"
@@ -208,7 +247,9 @@
 
       <!-- Languages Section -->
       <section id="languages" class="mt-6 md:mt-8">
-        <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-xl p-6 md:p-8"
+        >
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">
             Languages
           </h2>
@@ -222,9 +263,9 @@
       <!-- YouTube Section -->
       <section id="youtube" class="mt-6 md:mt-8 mb-6 md:mb-8">
         <div
-          class="bg-white rounded-lg shadow-md p-8 md:p-12 relative overflow-hidden"
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-xl p-8 md:p-12 relative overflow-hidden"
         >
-          <div class="absolute inset-0 opacity-20">
+          <div class="absolute inset-0 opacity-20 dark:opacity-10">
             <div
               class="animate-slide-bg"
               style="
@@ -240,7 +281,7 @@
             </h2>
             <div class="text-center">
               <a
-                class="inline-block bg-gray-800 bg-opacity-70 border-4 border-gray-300 text-white px-6 md:px-8 py-3 md:py-4 text-xl md:text-2xl rounded-lg hover:bg-opacity-90 transition-all duration-300"
+                class="inline-block bg-gray-800 dark:bg-gray-900 bg-opacity-70 dark:bg-opacity-90 border-4 border-gray-300 dark:border-gray-600 text-white px-6 md:px-8 py-3 md:py-4 text-xl md:text-2xl rounded-lg hover:bg-opacity-90 dark:hover:bg-opacity-100 transition-all duration-300"
               >
                 Coming soon!
               </a>
@@ -251,6 +292,53 @@
     </div>
 
     <script>
+      // ==================== DARK MODE MANAGEMENT ====================
+
+      class ThemeManager {
+        constructor() {
+          // Check if user has a saved preference, otherwise use system preference
+          const savedTheme = localStorage.getItem("theme");
+          if (savedTheme) {
+            this.isDark = savedTheme === "dark";
+          } else {
+            // Use system preference for first-time visitors
+            this.isDark = window.matchMedia(
+              "(prefers-color-scheme: dark)",
+            ).matches;
+          }
+          this.applyTheme();
+        }
+
+        applyTheme() {
+          if (this.isDark) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        }
+
+        toggle() {
+          this.isDark = !this.isDark;
+          localStorage.setItem("theme", this.isDark ? "dark" : "light");
+          this.applyTheme();
+          this.updateToggleButton();
+        }
+
+        updateToggleButton() {
+          const button = document.getElementById("theme-toggle");
+          if (button) {
+            const icon = button.querySelector("i");
+            icon.className = `fa-solid ${this.getIcon()}`;
+          }
+        }
+
+        getIcon() {
+          return this.isDark ? "fa-moon" : "fa-sun";
+        }
+      }
+
+      const themeManager = new ThemeManager();
+
       // ==================== DATA STORES ====================
 
       const navigationItems = [
@@ -291,9 +379,9 @@
 
       const aboutParagraphs = [
         `I'm <strong>Kinan Martin</strong>. I'm an Applied AI Research Engineer at 
-        <a href="https://reazon.jp" class="text-blue-600 hover:text-blue-800 underline">Reazon Holdings</a>
+        <a href="https://reazon.jp" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">Reazon Holdings</a>
         --
-        <a href="https://research.reazon.jp/index.html" class="text-blue-600 hover:text-blue-800 underline">
+        <a href="https://research.reazon.jp/index.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">
           Human Interaction Laboratory
         </a>
         in Tokyo, Japan.`,
@@ -308,24 +396,24 @@
 
         `Before coming to Japan, I got my Bachelor and Master of Engineering of Computer and Cognitive
         Sciences at 
-        <a href="https://www.mit.edu" class="text-blue-600 hover:text-blue-800 underline">MIT</a> 
+        <a href="https://www.mit.edu" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">MIT</a> 
         (Course 6-9 MEng), where I worked at the
-        <a href="http://cpl.mit.edu" class="text-blue-600 hover:text-blue-800 underline">Computational Psycholinguistics Lab</a>
+        <a href="http://cpl.mit.edu" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">Computational Psycholinguistics Lab</a>
         under
-        <a href="https://www.mit.edu/~rplevy/index.html" class="text-blue-600 hover:text-blue-800 underline">Roger Levy</a>
+        <a href="https://www.mit.edu/~rplevy/index.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">Roger Levy</a>
         on probing text and speech based large language models
         for natural language understanding.`,
 
         `I love learning languages. Currently I speak
-        <a href="#languages" class="text-blue-600 hover:text-blue-800 underline">10 languages</a>
+        <a href="#languages" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">10 languages</a>
         at different levels of fluency, and I'm always learning more!`,
       ];
 
       const newsItems = [
         {
           date: "2024/06",
-          content: `Started work at <a href="https://reazon.jp" class="text-blue-600 hover:text-blue-800 underline">Reazon Holdings</a>
-          -- <a href="https://research.reazon.jp/index.html" class="text-blue-600 hover:text-blue-800 underline">Human Interaction Laboratory</a>
+          content: `Started work at <a href="https://reazon.jp" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">Reazon Holdings</a>
+          -- <a href="https://research.reazon.jp/index.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">Human Interaction Laboratory</a>
           as an Applied AI Research Engineer in Tokyo, Japan 🇯🇵`,
         },
         {
@@ -336,8 +424,8 @@
         {
           date: "2024/01",
           content: `Teaching Python and web dev through
-          <a href="https://misti.mit.edu/mit-arab-world" class="text-blue-600 hover:text-blue-800 underline">MIT-Arab World Global Teaching Labs</a>
-          at <a href="https://injaz.org.jo" class="text-blue-600 hover:text-blue-800 underline">INJAZ</a> in Amman, Jordan 🇯🇴`,
+          <a href="https://misti.mit.edu/mit-arab-world" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">MIT-Arab World Global Teaching Labs</a>
+          at <a href="https://injaz.org.jo" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">INJAZ</a> in Amman, Jordan 🇯🇴`,
         },
         {
           date: "2023/09",
@@ -346,13 +434,13 @@
         },
         {
           date: "2023/08",
-          content: `Presented <a href="https://arxiv.org/abs/2306.06232" target="_blank" class="text-blue-600 hover:text-blue-800 underline">paper</a>
+          content: `Presented <a href="https://arxiv.org/abs/2306.06232" target="_blank" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">paper</a>
           on probing self-supervised speech models at
-          <a href="https://interspeech2023.org" class="text-blue-600 hover:text-blue-800 underline">INTERSPEECH 2023</a> in Dublin, Ireland 🇮🇪`,
+          <a href="https://interspeech2023.org" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">INTERSPEECH 2023</a> in Dublin, Ireland 🇮🇪`,
         },
         {
           date: "2023/06-08",
-          content: `Interned at <a href="https://www.hh-ri.com/ai/" class="text-blue-600 hover:text-blue-800 underline">
+          content: `Interned at <a href="https://www.hh-ri.com/ai/" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">
           Foxconn: Hon Hai Research Institute in the Artificial Intelligence Department (鴻海研究院人工智慧所)</a> in Taipei, Taiwan 🇹🇼`,
         },
         {
@@ -470,8 +558,14 @@
         const nav = document.getElementById("navigation");
         nav.innerHTML = `
           <div class="container mx-auto px-4 md:px-6 max-w-6xl">
-            <ul class="list-none flex flex-wrap justify-center items-center gap-3 md:gap-6 text-sm md:text-base">
-            </ul>
+            <div class="flex justify-between items-center">
+              <ul class="list-none flex flex-wrap items-center gap-3 md:gap-6 text-sm md:text-base">
+              </ul>
+              <!-- Theme Toggle -->
+              <button id="theme-toggle" class="text-white hover:text-blue-300 transition-colors p-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700">
+                <i class="fa-solid ${themeManager.getIcon()}"></i>
+              </button>
+            </div>
           </div>
         `;
 
@@ -488,6 +582,12 @@
           li.appendChild(a);
           ul.appendChild(li);
         });
+
+        // Setup theme toggle
+        const toggleBtn = document.getElementById("theme-toggle");
+        toggleBtn.addEventListener("click", () => {
+          themeManager.toggle();
+        });
       }
 
       // Social Links Component
@@ -498,7 +598,8 @@
           const a = document.createElement("a");
           a.href = link.href;
           a.target = "_blank";
-          a.className = "text-blue-700 hover:text-blue-500 transition-colors";
+          a.className =
+            "text-blue-700 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors";
           a.innerHTML = `<i class="${link.icon}" aria-label="${link.label}"></i>`;
           container.appendChild(a);
         });
@@ -523,7 +624,7 @@
           const li = document.createElement("li");
           li.className = "flex gap-2 md:gap-3";
           li.innerHTML = `
-            <span class="text-blue-600 mt-0.5 md:mt-1 flex-shrink-0"><i class="fa-solid fa-arrow-right"></i></span>
+            <span class="text-blue-600 dark:text-blue-400 mt-0.5 md:mt-1 flex-shrink-0"><i class="fa-solid fa-arrow-right"></i></span>
             <p><b>${item.date}:</b> ${item.content}</p>
           `;
           newsList.appendChild(li);
@@ -531,7 +632,8 @@
 
         // Add the "more items" indicator
         const moreLi = document.createElement("li");
-        moreLi.className = "text-xs text-gray-500 text-center pt-4";
+        moreLi.className =
+          "text-xs text-gray-500 dark:text-gray-400 text-center pt-4";
         moreLi.textContent = "[以下省略]";
         newsList.appendChild(moreLi);
       }
@@ -543,7 +645,7 @@
         publications.forEach((pub) => {
           const li = document.createElement("li");
           li.className =
-            "paper group bg-gray-50 border-l-4 border-gray-400 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300";
+            "paper group bg-gray-50 dark:bg-gray-700 border-l-4 border-gray-400 dark:border-gray-500 hover:border-blue-600 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-600 transition-all duration-300";
 
           const authorsHtml = pub.authors
             .map((author) =>
@@ -554,14 +656,14 @@
           li.innerHTML = `
             <a href="${pub.link}" target="_blank" class="block p-4 md:p-6">
               <div class="flex gap-2 md:gap-3">
-                <span class="text-gray-600 group-hover:text-blue-600 mt-0.5 md:mt-1 flex-shrink-0">
+                <span class="text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 mt-0.5 md:mt-1 flex-shrink-0">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </span>
                 <div class="flex-1 min-w-0">
                   <p class="font-bold text-base md:text-lg mb-2">${pub.title}</p>
-                  <p class="text-xs md:text-sm text-gray-600 mb-2">${authorsHtml}</p>
+                  <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-2">${authorsHtml}</p>
                   <div class="flex flex-col sm:flex-row sm:justify-between text-xs md:text-sm gap-1 sm:gap-0">
-                    <p class="italic text-gray-500">${pub.date}</p>
+                    <p class="italic text-gray-500 dark:text-gray-400">${pub.date}</p>
                     <p class="font-semibold">${pub.publisher}</p>
                   </div>
                 </div>
@@ -580,11 +682,11 @@
         languagesData.forEach((lang) => {
           const div = document.createElement("div");
           div.className =
-            "language group cursor-pointer bg-gray-50 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-400 rounded-xl p-3 md:p-4 text-center transition-all duration-300";
+            "language group cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600 border-2 border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 rounded-xl p-3 md:p-4 text-center transition-all duration-300";
           div.innerHTML = `
             <span role="img" aria-label="${lang.english}" class="language-flag text-4xl md:text-5xl lg:text-6xl block mb-1 md:mb-2">${lang.flag}</span>
             <span class="native-name font-bold text-sm md:text-base lg:text-lg block group-hover:hidden">${lang.native}</span>
-            <span class="english-name font-bold text-sm md:text-base lg:text-lg hidden group-hover:block text-blue-600">${lang.english}</span>
+            <span class="english-name font-bold text-sm md:text-base lg:text-lg hidden group-hover:block text-blue-600 dark:text-blue-400">${lang.english}</span>
             <p class="text-xs md:text-sm italic mt-1">${lang.level}</p>
           `;
           container.appendChild(div);
@@ -595,7 +697,7 @@
         moreDiv.className =
           "col-span-2 md:col-span-3 lg:col-span-4 text-center pt-4";
         moreDiv.innerHTML =
-          '<p class="text-base md:text-lg italic text-gray-600">...and always learning more!</p>';
+          '<p class="text-base md:text-lg italic text-gray-600 dark:text-gray-400">...and always learning more!</p>';
         container.appendChild(moreDiv);
 
         // Apply Twemoji to language flags after they're rendered
