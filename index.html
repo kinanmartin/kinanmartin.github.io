@@ -105,6 +105,26 @@
         }
       }
 
+      /* Navigation menu styles */
+      #nav-links {
+        display: none;
+      }
+
+      #nav-links.show-desktop {
+        display: flex;
+      }
+
+      #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      #mobile-menu.show-mobile {
+        max-height: 400px;
+        transition: max-height 0.3s ease-in;
+      }
+
       /* Smooth transitions for dark mode */
       * {
         transition:
@@ -137,7 +157,45 @@
       id="navigation"
       class="bg-gray-900 dark:bg-gray-950 text-white py-3 md:py-4 sticky top-0 z-50 shadow-lg"
     >
-      <!-- Nav will be injected here -->
+      <div class="container mx-auto px-4 md:px-6 max-w-6xl">
+        <!-- Main nav bar -->
+        <div class="flex justify-between items-center">
+          <!-- Left: Name link and navigation links -->
+          <div class="flex items-center gap-6">
+            <a
+              href=""
+              class="text-white font-bold hover:text-blue-300 transition-colors text-xl md:text-xl"
+            >
+              Kinan Martin
+            </a>
+            <ul
+              id="nav-links"
+              class="hidden md:flex list-none flex-wrap items-center gap-6 text-sm md:text-base"
+            ></ul>
+          </div>
+
+          <!-- Right: Theme toggle and hamburger -->
+          <div class="flex items-center gap-2">
+            <button
+              id="theme-toggle"
+              class="text-white hover:text-blue-300 transition-colors p-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 w-10 h-10"
+            >
+              <i class="fa-solid ${themeManager.getIcon()}"></i>
+            </button>
+            <button
+              id="menu-toggle"
+              class="text-white hover:text-blue-300 transition-colors p-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 w-10 h-10"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile menu (shown below navbar on mobile when menu is open) -->
+        <div id="mobile-menu" class="md:hidden">
+          <ul class="list-none pt-4 space-y-2"></ul>
+        </div>
+      </div>
     </nav>
 
     <!-- Main Content Container -->
@@ -342,7 +400,6 @@
       // ==================== DATA STORES ====================
 
       const navigationItems = [
-        { href: "", text: "Kinan Martin" },
         { href: "#news", text: "News" },
         { href: "#publications", text: "Publications" },
         {
@@ -555,38 +612,110 @@
 
       // Navigation Component
       function renderNavigation() {
-        const nav = document.getElementById("navigation");
-        nav.innerHTML = `
-          <div class="container mx-auto px-4 md:px-6 max-w-6xl">
-            <div class="flex justify-between items-center">
-              <ul class="list-none flex flex-wrap items-center gap-3 md:gap-6 text-sm md:text-base">
-              </ul>
-              <!-- Theme Toggle -->
-              <button id="theme-toggle" class="text-white hover:text-blue-300 transition-colors p-2 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700">
-                <i class="fa-solid ${themeManager.getIcon()}"></i>
-              </button>
-            </div>
-          </div>
-        `;
+        const desktopNav = document.getElementById("nav-links");
+        const mobileNav = document.querySelector("#mobile-menu ul");
+        const themeToggle = document.getElementById("theme-toggle");
+        const menuToggle = document.getElementById("menu-toggle");
 
-        const ul = nav.querySelector("ul");
+        // Update theme toggle icon
+        const themeIcon = themeToggle.querySelector("i");
+        themeIcon.className = `fa-solid ${themeManager.getIcon()}`;
 
+        // Populate both desktop and mobile nav items
         navigationItems.forEach((item) => {
-          const li = document.createElement("li");
-          const a = document.createElement("a");
-          a.href = item.href;
-          a.className =
+          // Desktop nav item
+          const desktopLi = document.createElement("li");
+          const desktopA = document.createElement("a");
+          desktopA.href = item.href;
+          desktopA.className =
             "text-white font-bold hover:text-blue-300 transition-colors";
-          a.textContent = item.text;
-          if (item.target) a.target = item.target;
-          li.appendChild(a);
-          ul.appendChild(li);
+          desktopA.textContent = item.text;
+          if (item.target) desktopA.target = item.target;
+          desktopLi.appendChild(desktopA);
+          desktopNav.appendChild(desktopLi);
+
+          // Mobile nav item
+          const mobileLi = document.createElement("li");
+          const mobileA = document.createElement("a");
+          mobileA.href = item.href;
+          mobileA.className =
+            "block text-white font-bold hover:text-blue-300 transition-colors py-2 px-4 hover:bg-gray-800 dark:hover:bg-gray-700 rounded";
+          mobileA.textContent = item.text;
+          if (item.target) mobileA.target = item.target;
+          mobileLi.appendChild(mobileA);
+          mobileNav.appendChild(mobileLi);
         });
 
         // Setup theme toggle
-        const toggleBtn = document.getElementById("theme-toggle");
-        toggleBtn.addEventListener("click", () => {
+        themeToggle.addEventListener("click", () => {
           themeManager.toggle();
+          const icon = themeToggle.querySelector("i");
+          icon.className = `fa-solid ${themeManager.getIcon()}`;
+        });
+
+        // Setup menu toggle
+        let menuOpen = false;
+        menuToggle.addEventListener("click", () => {
+          menuOpen = !menuOpen;
+          const icon = menuToggle.querySelector("i");
+          const mobileMenu = document.getElementById("mobile-menu");
+
+          if (menuOpen) {
+            // Check if mobile or desktop
+            if (window.innerWidth >= 768) {
+              // Desktop: show links in navbar
+              desktopNav.classList.add("show-desktop");
+            } else {
+              // Mobile: show dropdown menu
+              mobileMenu.classList.add("show-mobile");
+            }
+            icon.className = "fa-solid fa-times";
+          } else {
+            // Hide menus
+            desktopNav.classList.remove("show-desktop");
+            mobileMenu.classList.remove("show-mobile");
+            icon.className = "fa-solid fa-bars";
+          }
+        });
+
+        // Handle window resize
+        let lastWidth = window.innerWidth;
+        window.addEventListener("resize", () => {
+          const currentWidth = window.innerWidth;
+          const mobileMenu = document.getElementById("mobile-menu");
+
+          // If crossing the mobile/desktop boundary
+          if (
+            (lastWidth < 768 && currentWidth >= 768) ||
+            (lastWidth >= 768 && currentWidth < 768)
+          ) {
+            // Reset menu state when switching between mobile and desktop
+            if (menuOpen) {
+              if (currentWidth >= 768) {
+                // Switching to desktop
+                mobileMenu.classList.remove("show-mobile");
+                desktopNav.classList.add("show-desktop");
+              } else {
+                // Switching to mobile
+                desktopNav.classList.remove("show-desktop");
+                mobileMenu.classList.add("show-mobile");
+              }
+            }
+          }
+          lastWidth = currentWidth;
+        });
+
+        // Close mobile menu when clicking a link
+        mobileNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth < 768) {
+              menuOpen = false;
+              document
+                .getElementById("mobile-menu")
+                .classList.remove("show-mobile");
+              menuToggle.querySelector("i").className = "fa-solid fa-bars";
+            }
+          });
         });
       }
 
