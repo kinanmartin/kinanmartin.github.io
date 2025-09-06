@@ -592,19 +592,25 @@
           flag: "🇵🇱",
           native: "Polski",
           english: "Polish",
-          level: "Elementary",
+          level: "Basic",
         },
         {
           flag: "🇰🇷",
           native: "한국어",
           english: "Korean",
-          level: "Elementary",
+          level: "Basic",
         },
         {
           flag: "🇻🇳",
           native: "Tiếng Việt",
           english: "Vietnamese",
-          level: "Elementary",
+          level: "Basic",
+        },
+        {
+          flag: "🇩🇪",
+          native: "Deutsch",
+          english: "German",
+          level: "Basic",
         },
       ];
 
@@ -916,6 +922,7 @@
           "Xin chào!",
           "Xin chào! 🇻🇳",
         ],
+        ["H", "Ha", "Hal", "Hall", "Hallo", "Hallo!", "Hallo! 🇩🇪"],
       ];
 
       const rtl_languages = [5];
@@ -956,7 +963,8 @@
               currentText.includes("🇨🇱") ||
               currentText.includes("🇰🇷") ||
               currentText.includes("🇵🇱") ||
-              currentText.includes("🇻🇳")
+              currentText.includes("🇻🇳") ||
+              currentText.includes("🇩🇪")
             ) {
               twemoji.parse(textElement, {
                 folder: "svg",
